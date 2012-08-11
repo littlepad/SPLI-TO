@@ -1,7 +1,7 @@
 SPLI-TO
 =======
 
-DISCRIPTION
+DESCRIPTION
 -------
 AIR application to split the photo for TOLOT([http://tolot.com](http://tolot.com))
 
