@@ -1,6 +1,7 @@
 # Build and Release Folders
 bin-debug/
 bin-release/
+build/
 
 # Project property files
 .actionScriptProperties
@@ -9,7 +10,7 @@ bin-release/
 .project
 .FlexUnitSettings
 
-build.xml
+#cert
 cert/
 
 .DS_Store
