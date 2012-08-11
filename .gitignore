@@ -7,3 +7,9 @@ bin-release/
 .flexProperties
 .settings/
 .project
+.FlexUnitSettings
+
+build.xml
+cert/
+
+.DS_Store

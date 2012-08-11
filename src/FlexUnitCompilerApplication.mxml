@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- これは FlexUnit クラスをコンパイルするために Flash Builder で自動的に生成されるファイルです。変更しないでください。
+このファイルを再生成するには、「FlexUnit 結果」ビューの「更新」アイコンをクリックしてください。 -->
+
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx">
+	<fx:Script>
+		<![CDATA[
+			import flexUnitTests.AllTests;
+			import flexUnitTests.FileNameTest;
+			import flexUnitTests.OutputFilesTest;
+			import flexUnitTests.OutputFileTest;
+			
+			private var flexUnitTests_OutputFileTest_obj:flexUnitTests.OutputFileTest;
+			
+			private var flexUnitTests_OutputFilesTest_obj:flexUnitTests.OutputFilesTest;
+			
+			private var flexUnitTests_FileNameTest_obj:flexUnitTests.FileNameTest;
+			
+			private var flexUnitTests_AllTests_obj:flexUnitTests.AllTests;
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 非ビジュアルエレメント (サービス、値オブジェクトなど) をここに配置 -->
+	</fx:Declarations>
+</s:WindowedApplication>
