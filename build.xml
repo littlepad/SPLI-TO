@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project name="splito" basedir="." default="package">
+	
+	<property name="FLEX_HOME" value="/Applications/Adobe Flash Builder 4.5/sdks/4.5.1" />
+	<property name="MXMLC.JAR" value="${FLEX_HOME}/lib/mxmlc.jar" />
+	<property name="ADT.JAR" value="${FLEX_HOME}/lib/adt.jar" />
+	<property name="APP_NAME" value="splito"/>
+	<property name="APP_ROOT_DIR" value="src" />
+	<property name="MAIN_SOURCE_FILE" value="${APP_ROOT_DIR}/${APP_NAME}.mxml"/>
+	<property name="APP_ROOT_FILE" value="${APP_NAME}.swf"/>
+	<property name="APP_DESCRIPTOR" value="${APP_ROOT_DIR}/${APP_NAME}-app.xml"/>
+	<property name="AIR_NAME" value="SPLI-TO.air"/>
+	<property name="build" value="build"/>
+	<property name="debug" value="bin-debug"/>
+	<property name="release" value="bin-release"/>
+	<property name="STORETYPE" value="pkcs12"/>
+	<property name="KEYSTORE" value="cert/splito.p12"/>
+	<property name="PASSWORD" value="hogehoge"/>
+	
+	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" />
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${build}"/>
+		<mkdir dir="${release}"/>
+		<copy todir="${release}"> 
+			<fileset file="${APP_DESCRIPTOR}"/> 
+		</copy> 
+		<replace file="${release}/${APP_NAME}-app.xml" token="[この値は Flash Builder の出力ファイル app.xml に上書きされます。]" value="${APP_NAME}.swf" encoding="UTF-8" />
+	</target>
+	
+	<target name="compile" depends="init">
+		<echo message="compiling..." />
+		<mxmlc 
+			file="${MAIN_SOURCE_FILE}" 
+ 			output="${release}/${APP_NAME}.swf"
+            actionscript-file-encoding="UTF-8"
+            keep-generated-actionscript="true"
+            incremental="true"
+            configname="air"
+		>
+        <load-config filename="${FLEX_HOME}/frameworks/air-config.xml"/>
+        <source-path path-element="${FLEX_HOME}/frameworks"/>
+		<!--flex sdkのlibsを追加-->
+		<compiler.library-path dir="${FLEX_HOME}/frameworks" append="true">
+			<include name="libs"/>
+		</compiler.library-path>
+		<!--projectのlibsを追加-->
+		<compiler.library-path dir="libs" append="true">
+			<include name="*.swc" />
+		</compiler.library-path>	
+		
+        <default-size width="600" height="490" />
+			
+		</mxmlc>
+		<echo message="compiled." />
+	</target>
+			
+	<!-- AIRファイルにする -->
+	<target name="package" description="Create the AIR Package" depends="compile">
+		<copy todir="${release}"> 
+			<fileset file="${APP_DESCRIPTOR}"/> 
+		</copy> 
+		
+		<java jar="${ADT.JAR}" fork="true"> 
+			<arg value="-package"/>
+			<arg value="-storetype"/>
+			<arg value="${STORETYPE}"/>
+			<arg value="-keystore"/>
+			<arg value="${KEYSTORE}"/>
+			<arg value="-storepass"/>
+			<arg value="${PASSWORD}"/>
+			<arg value="${build}/${AIR_NAME}"/>
+			<arg value="${release}/${APP_NAME}-app.xml"/>
+			<arg value="-C"/>
+			<arg value="${release}"/>
+			<arg value="splito.swf"/>
+			<arg value="-C"/>
+			<arg value="${APP_ROOT_DIR}"/>
+			<arg value="assets"/>
+		</java>
+	</target>
+	
+	
+	<target name="clean" description="clean up">
+		<delete dir="${build}"/>
+		<delete dir="${release}"/>
+	</target>
+	
+</project>
