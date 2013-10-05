@@ -1,4 +1,4 @@
-package net.littlepad.splito.view.pages
+package net.littlepad.splito.views.pages
 {
 	import flash.events.Event;
 	import flash.geom.Rectangle;
@@ -7,7 +7,7 @@ package net.littlepad.splito.view.pages
 	
 	import net.littlepad.splito.configs.PageConfig;
 	import net.littlepad.splito.events.ImageEvent;
-	import net.littlepad.splito.view.pages.mxml.PageViewBase;
+	import net.littlepad.splito.views.pages.mxml.PageViewBase;
 	
 	public class PageView extends PageViewBase
 	{

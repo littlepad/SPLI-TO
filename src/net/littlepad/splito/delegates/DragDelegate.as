@@ -4,7 +4,7 @@ package net.littlepad.splito.delegates
 	import flash.events.MouseEvent;
 	import flash.geom.Rectangle;
 	
-	import net.littlepad.splito.view.pages.SplitPageView;
+	import net.littlepad.splito.views.pages.SplitPageView;
 
 	public class DragDelegate
 	{

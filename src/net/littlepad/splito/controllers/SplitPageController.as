@@ -14,7 +14,7 @@ package net.littlepad.splito.controllers
 	import net.littlepad.splito.events.SplitPageModelEvent;
 	import net.littlepad.splito.models.SplitPageModel;
 	import net.littlepad.splito.utils.FileName;
-	import net.littlepad.splito.view.pages.SplitPageView;
+	import net.littlepad.splito.views.pages.SplitPageView;
 	
 	public class SplitPageController extends EventDispatcher
 	{

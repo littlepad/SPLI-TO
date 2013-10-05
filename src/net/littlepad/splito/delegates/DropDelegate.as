@@ -5,7 +5,7 @@ package net.littlepad.splito.delegates
 	import flash.desktop.NativeDragManager;
 	import flash.events.NativeDragEvent;
 	
-	import net.littlepad.splito.view.pages.SplitPageView;
+	import net.littlepad.splito.views.pages.SplitPageView;
 	
 	
 	public class DropDelegate

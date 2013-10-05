@@ -6,8 +6,8 @@
 					   maxWidth="600" maxHeight="490" 
 					   minWidth="600" minHeight="490" 
 					   xmlns:local="*" 
-					   xmlns:pages="net.littlepad.splito.view.pages.*" 
-					   xmlns:buttons="net.littlepad.splito.view.buttons.*" 
+					   xmlns:pages="net.littlepad.splito.views.pages.*" 
+					   xmlns:buttons="net.littlepad.splito.views.buttons.*" 
 					   creationComplete="init(event)" 
 					   >
 	

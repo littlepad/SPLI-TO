@@ -1,4 +1,4 @@
-package net.littlepad.splito.view.pages
+package net.littlepad.splito.views.pages
 {
 	import net.littlepad.splito.configs.PageConfig;
 

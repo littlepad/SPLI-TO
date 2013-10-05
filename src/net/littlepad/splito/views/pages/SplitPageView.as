@@ -1,4 +1,4 @@
-package net.littlepad.splito.view.pages
+package net.littlepad.splito.views.pages
 {
 	import flash.events.Event;
 	import flash.filesystem.File;
@@ -8,7 +8,7 @@ package net.littlepad.splito.view.pages
 	
 	import net.littlepad.splito.configs.PageConfig;
 	import net.littlepad.splito.events.SplitPageEvent;
-	import net.littlepad.splito.view.pages.mxml.SplitPageViewBase;
+	import net.littlepad.splito.views.pages.mxml.SplitPageViewBase;
 	
 	public class SplitPageView extends SplitPageViewBase
 	{

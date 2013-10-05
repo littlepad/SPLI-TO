@@ -3,7 +3,7 @@
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
 			   xmlns:mx="library://ns.adobe.com/flex/mx" 
 			   title="画像の書き出し" fontFamily="_ゴシック"
-			   skinClass="net.littlepad.splito.view.dialogs.ProgressDialogSkin"
+			   skinClass="net.littlepad.splito.views.dialogs.ProgressDialogSkin"
 			   width="250" height="150">
 	
 	<s:VGroup gap="15" paddingLeft="25" paddingRight="25" paddingTop="25">
