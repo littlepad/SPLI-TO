@@ -1,7 +1,9 @@
 package flexUnitTests
 {
 	import flexunit.framework.Assert;
-	import net.littlepad.splito.FileName;
+	
+	import net.littlepad.splito.utils.FileName;
+	import net.littlepad.splito.resources.PageType;
 	
 	public class FileNameTest
 	{		
@@ -35,8 +37,8 @@ package flexUnitTests
 		[Test]
 		public function testGetOutputFileName():void
 		{
-			Assert.assertEquals(FileName.OUTPUT_DIRECTORY + "fuga_left.jpg", FileName.getOutputFileName("/hoge/hoge/fuga.jpg", FileName.LEFT_PAGE));
-			Assert.assertEquals(FileName.OUTPUT_DIRECTORY + "fuga_right.jpg", FileName.getOutputFileName("/hoge/hoge/fuga.jpg", FileName.RIGHT_PAGE));
+			Assert.assertEquals("tolot_output/fuga_left.jpg", FileName.getOutputJpegName("/hoge/hoge/fuga.jpg", PageType.LEFT));
+			Assert.assertEquals("tolot_output/fuga_right.jpg", FileName.getOutputJpegName("/hoge/hoge/fuga.jpg", PageType.RIGHT));
 		}
 	}
 }

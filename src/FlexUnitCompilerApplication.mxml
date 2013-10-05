@@ -8,18 +8,21 @@
 					   xmlns:mx="library://ns.adobe.com/flex/mx">
 	<fx:Script>
 		<![CDATA[
+			import flexUnitTests.ImageProcessingTest;
 			import flexUnitTests.AllTests;
 			import flexUnitTests.FileNameTest;
-			import flexUnitTests.OutputFilesTest;
-			import flexUnitTests.OutputFileTest;
+			import flexUnitTests.OutputJpegsManagerTest;
+			import flexUnitTests.OutputJpegTest;
 			
-			private var flexUnitTests_OutputFileTest_obj:flexUnitTests.OutputFileTest;
+			private var flexUnitTests_OutputFileTest_obj:flexUnitTests.OutputJpegTest;
 			
-			private var flexUnitTests_OutputFilesTest_obj:flexUnitTests.OutputFilesTest;
+			private var flexUnitTests_OutputFilesTest_obj:flexUnitTests.OutputJpegsManagerTest;
 			
 			private var flexUnitTests_FileNameTest_obj:flexUnitTests.FileNameTest;
 			
 			private var flexUnitTests_AllTests_obj:flexUnitTests.AllTests;
+			
+			private var flexUnitTests_ImageProcessingTest_obj:flexUnitTests.ImageProcessingTest;
 		]]>
 	</fx:Script>
 	<fx:Declarations>

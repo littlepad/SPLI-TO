@@ -6,145 +6,31 @@
 					   maxWidth="600" maxHeight="490" 
 					   minWidth="600" minHeight="490" 
 					   xmlns:local="*" 
-					   xmlns:splitPages="net.littlepad.splito.splitPages.*" 
-					   xmlns:view="net.littlepad.splito.splitPage.view.*" 
-					   xmlns:splitPage="net.littlepad.splito.splitPage.*"
-					   creationComplete="init(event)" xmlns:splito="net.littlepad.splito.*" xmlns:button="net.littlepad.splito.button.*"
+					   xmlns:pages="net.littlepad.splito.view.pages.*" 
+					   xmlns:buttons="net.littlepad.splito.view.buttons.*" 
+					   creationComplete="init(event)" 
 					   >
 	
 	<fx:Script>
 		<![CDATA[
-			import mx.controls.Alert;
-			import mx.core.IFlexDisplayObject;
 			import mx.events.FlexEvent;
-			import mx.managers.PopUpManager;
 			
-			import net.littlepad.splito.OutputFiles;
-			import net.littlepad.splito.dialog.ProgressDialog;
-			import net.littlepad.splito.events.OutputFilesEvent;
-			import net.littlepad.splito.splitPage.events.SplitPageEvent;
+			import net.littlepad.splito.controllers.MainController;
+			import net.littlepad.splito.controllers.SplitPageController;
+			import net.littlepad.splito.models.MainModel;
+			import net.littlepad.splito.models.SplitPageModel;
 			
-			private var _loader:Loader;
-			private var _outputFiles:OutputFiles;
-			private var _progressDialog:ProgressDialog;
-			
+			private var _mainController:MainController;
+			private var _splitPageController:SplitPageController;
+
 			/**
 			 * 初期設定
 			 * @param event FlexEvent
 			 */
 			private function init(event:FlexEvent):void
 			{
-				// 写真配置時のスライダー設定
-				sPage.addEventListener(SplitPageEvent.DISPLAY_COMPLETE,  function():void{
-					slider.value = uint(sPage.minScale*100);
-					if(slider.value == 100){
-						slider.enabled = false;
-					} else {
-						slider.enabled = true;
-					}
-				});
-			}
-			
-			/**
-			 * ボタンのクリックハンドラ
-			 * @param Event MouseEvent
-			 */
-			private function buttonClickHandler(event:MouseEvent):void
-			{
-				if(sPage.imageFile){
-					popUpProgressDialog();
-					loadImage();
-				}
-			}
-			
-			/**
-			 * プログレスダイアログのポップアップ
-			 */
-			private function popUpProgressDialog():void
-			{
-				_progressDialog = ProgressDialog(PopUpManager.createPopUp(this, ProgressDialog, true));
-				PopUpManager.centerPopUp(IFlexDisplayObject(_progressDialog));
-			}
-			
-			/**
-			 * 画像のロード
-			 */
-			private function loadImage():void
-			{
-				_loader = new Loader();
-				_loader.contentLoaderInfo.addEventListener(Event.COMPLETE, loadCompleteHandler);
-				_loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
-				_loader.load(new URLRequest(sPage.imageFile.url));
-			}
-			
-			/**
-			 * 画像ロード完了ハンドラ
-			 * @param event Event
-			 */
-			private function loadCompleteHandler(event:Event):void
-			{
-				removeLoaderEvents();
-				createOutputFiles();
-			}
-			
-			/**
-			 * IOErrorハンドラ
-			 * @param event IOErrorEvent
-			 */
-			private function ioErrorHandler(event:IOErrorEvent):void
-			{
-				removeLoaderEvents();
-				PopUpManager.removePopUp(_progressDialog);
-				Alert.show("画像が読み込めませんでした", "画像読み込みエラー");
-			}
-			
-			/**
-			 * loaderイベントの削除
-			 */
-			private function removeLoaderEvents():void
-			{
-				_loader.contentLoaderInfo.removeEventListener(Event.COMPLETE, loadCompleteHandler);
-				_loader.contentLoaderInfo.removeEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
-			}
-			
-			/**
-			 * 出力画像の生成
-			 */
-			private function createOutputFiles():void
-			{
-				_outputFiles = new OutputFiles(_loader, sPage.scale, sPage.getLeftPageRect(), sPage.getRightPageRect(), sPage.imageFile.url);
-				_outputFiles.addEventListener(OutputFilesEvent.COMPLETE, splitFileCompleteHandler);
-				_outputFiles.addEventListener(OutputFilesEvent.PROGRESS, splitFileProgressHandler);
-				_outputFiles.create();
-			}
-			
-			/**
-			 * 画像書き出しプログレスハンドラ
-			 * @param event OutputFilesEvent
-			 */
-			private function splitFileProgressHandler(event:OutputFilesEvent):void
-			{
-				_progressDialog.progressBar.width = (_progressDialog.progressBarBase.width - 2) * event.parcent/100;
-			}
-			
-			/**
-			 * 画像書き出し完了ハンドラ
-			 * @param event OutputFilesEvent
-			 */
-			private function splitFileCompleteHandler(event:OutputFilesEvent):void
-			{
-				removeOutputFilesEvents();
-				PopUpManager.removePopUp(_progressDialog);
-				Alert.show("保存が完了しました", "保存完了");
-			}
-			
-			/**
-			 * OutputFilesイベント削除
-			 */
-			private function removeOutputFilesEvents():void
-			{
-				_outputFiles.removeEventListener(OutputFilesEvent.COMPLETE, splitFileCompleteHandler);
-				_outputFiles.removeEventListener(OutputFilesEvent.PROGRESS, splitFileProgressHandler);
+				_mainController = new MainController(new MainModel(), this);
+				_splitPageController = new SplitPageController(new SplitPageModel(), splitPage);
 			}
 			
 			/**
@@ -152,19 +38,23 @@
 			 */
 			private function sliderHandler():void
 			{
-				sPage.resizePhoto(slider.value / 100);
+				splitPage.resizeImage(slider.value / 100);
 			}
 			
+			public function get splitPageController():SplitPageController
+			{
+				return _splitPageController;
+			}
 		]]>
 	</fx:Script>
 	
 	<s:VGroup gap="10" width="100%" height="100%" top="10" bottom="10" left="10" right="10" horizontalAlign="center">
-		<splitPage:SplitPage id="sPage" scaleX="0.18" scaleY="0.18"/>
+		<pages:SplitPageView id="splitPage" scaleX="0.35" scaleY="0.35"/>
 		<s:HGroup>
-			<s:Label fontFamily="Arial" fontSize="10" color="0x999999" textAlign="right" paddingTop="2" text="{int(sPage.minScale*100)}%"/>
-			<s:HSlider width="300" id="slider" minimum="{uint(sPage.minScale*100)}" maximum="100" enabled="false" valueCommit="sliderHandler()" />
+			<s:Label fontFamily="Arial" fontSize="10" color="0x999999" textAlign="right" paddingTop="2" text="{int(splitPage.minScale*100)}%"/>
+			<s:HSlider width="300" id="slider" minimum="{uint(splitPage.minScale*100)}" maximum="100" enabled="false"/>
 			<s:Label fontFamily="Arial" fontSize="10" color="0x999999" textAlign="left" paddingTop="2" text="100%"/>
 		</s:HGroup>
-		<button:SaveButton label="画像を保存する" fontFamily="_ゴシック" click="buttonClickHandler(event)"/>
+		<buttons:SaveButton id="saveButton" label="画像を保存する"/>
 	</s:VGroup>
 </s:WindowedApplication>

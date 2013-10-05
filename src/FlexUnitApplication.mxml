@@ -6,11 +6,12 @@
 					   xmlns:s="library://ns.adobe.com/flex/spark"
 					   xmlns:mx="library://ns.adobe.com/flex/mx"
 					   xmlns:flexui="flexunit.flexui.*"
-					   creationComplete="onCreationComplete()">
+					   creationComplete="onCreationComplete()" showStatusBar="false">
 	<fx:Script>
 		<![CDATA[
-			import flexUnitTests.OutputFilesTest;
-			import flexUnitTests.OutputFileTest;
+			import flexUnitTests.OutputJpegsManagerTest;
+			import flexUnitTests.OutputJpegTest;
+			import flexUnitTests.ImageProcessingTest;
 			import flexUnitTests.FileNameTest;
 			import flexUnitTests.AllTests;
 			
@@ -19,8 +20,9 @@
 				var testsToRun:Array = new Array();
 				testsToRun.push(flexUnitTests.AllTests);
 				testsToRun.push(flexUnitTests.FileNameTest);
-				testsToRun.push(flexUnitTests.OutputFileTest);
-				testsToRun.push(flexUnitTests.OutputFilesTest);
+				testsToRun.push(flexUnitTests.ImageProcessingTest);
+				testsToRun.push(flexUnitTests.OutputJpegTest);
+				testsToRun.push(flexUnitTests.OutputJpegsManagerTest);
 				return testsToRun;
 			}
 			
@@ -35,6 +37,6 @@
 	<fx:Declarations>
 		<!-- 非ビジュアルエレメント (サービス、値オブジェクトなど) をここに配置 -->
 	</fx:Declarations>
-	<flexui:FlexUnitTestRunnerUI id="testRunner">
+	<flexui:FlexUnitTestRunnerUI id="testRunner" portNumber="8765">
 	</flexui:FlexUnitTestRunnerUI>
 </s:WindowedApplication>
