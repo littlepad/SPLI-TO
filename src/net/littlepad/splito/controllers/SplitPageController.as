@@ -1,7 +1,6 @@
 package net.littlepad.splito.controllers
 {
 	import flash.desktop.ClipboardFormats;
-	import flash.display.Bitmap;
 	import flash.events.EventDispatcher;
 	import flash.events.NativeDragEvent;
 	import flash.filesystem.File;
@@ -69,8 +68,7 @@ package net.littlepad.splito.controllers
 		private function loadCompleteHandler(event:SplitPageModelEvent):void
 		{
 			_model.removeEventListener(SplitPageModelEvent.LOAD_COMPLETE, loadCompleteHandler);
-			var bmp:Bitmap = event.data as Bitmap;
-			checkImageSize(bmp.width, bmp.height);
+			checkImageSize(model.jpegBmp.width, model.jpegBmp.height);
 		}
 		
 		/**

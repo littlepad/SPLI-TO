@@ -7,7 +7,7 @@ package net.littlepad.splito.views.pages
 	import mx.events.FlexEvent;
 	
 	import net.littlepad.splito.configs.PageConfig;
-	import net.littlepad.splito.events.SplitPageEvent;
+	import net.littlepad.splito.events.SplitPageViewEvent;
 	import net.littlepad.splito.views.pages.mxml.SplitPageViewBase;
 	
 	public class SplitPageView extends SplitPageViewBase
@@ -38,7 +38,7 @@ package net.littlepad.splito.views.pages
 		{
 			minScale = _scale = getJustFitImageScale();
 			resizeImage(_scale);
-			dispatchEvent(new SplitPageEvent(SplitPageEvent.DISPLAY_COMPLETE));
+			dispatchEvent(new SplitPageViewEvent(SplitPageViewEvent.DISPLAY_COMPLETE));
 		}
 		
 		/**
@@ -118,11 +118,8 @@ package net.littlepad.splito.views.pages
 			return rightPage.getRectanle();
 		}
 		
-		public function get scale():Number { return _scale; }
-		
-		public function set scale(value:Number):void
-		{
-			_scale = value;
+		public function get scale():Number { 
+			return _scale;
 		}
 
 	}

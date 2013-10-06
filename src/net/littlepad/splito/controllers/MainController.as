@@ -9,7 +9,7 @@ package net.littlepad.splito.controllers
 	
 	import net.littlepad.splito.data.OutputSettingData;
 	import net.littlepad.splito.events.MainModelEvent;
-	import net.littlepad.splito.events.SplitPageEvent;
+	import net.littlepad.splito.events.SplitPageViewEvent;
 	import net.littlepad.splito.models.MainModel;
 	import net.littlepad.splito.views.dialogs.ProgressDialog;
 
@@ -29,7 +29,7 @@ package net.littlepad.splito.controllers
 		private function addEvents():void
 		{
 			// 画像配置時のスライダー設定
-			_view.splitPage.addEventListener(SplitPageEvent.DISPLAY_COMPLETE, function():void{
+			_view.splitPage.addEventListener(SplitPageViewEvent.DISPLAY_COMPLETE, function():void{
 				_view.slider.value = uint(_view.splitPage.minScale*100);
 				if(_view.slider.value == 100){
 					_view.slider.enabled = false;

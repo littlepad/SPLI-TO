@@ -7,12 +7,12 @@ package net.littlepad.splito.files
 	
 	import net.littlepad.splito.data.ImportFileData;
 	import net.littlepad.splito.data.OutputSettingData;
-	import net.littlepad.splito.module.output.images.events.OutputJpegEvent;
 	import net.littlepad.splito.events.OutputJpegsEvent;
+	import net.littlepad.splito.module.output.images.OutputJpeg;
+	import net.littlepad.splito.module.output.images.events.OutputJpegEvent;
 	import net.littlepad.splito.resources.PageType;
 	import net.littlepad.splito.utils.FileName;
 	import net.littlepad.splito.utils.ImageProcessing;
-	import net.littlepad.splito.module.output.images.OutputJpeg;
 	
 	/**
 	 * 左右ページのJPEGを出力するクラス

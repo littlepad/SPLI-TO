@@ -11,6 +11,7 @@ package net.littlepad.splito.models
 	public class SplitPageModel extends EventDispatcher
 	{
 		private var _jpegUrl:String;
+		private var _jpegBmp:Bitmap;
 		
 		public function SplitPageModel()
 		{
@@ -25,8 +26,8 @@ package net.littlepad.splito.models
 			var loader:Loader = new Loader();
 			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, function(event:Event):void {
 				loader.contentLoaderInfo.removeEventListener(Event.COMPLETE, arguments.callee);
-				var bmp:Bitmap = loader.content as Bitmap;
-				dispatchEvent(new SplitPageModelEvent(SplitPageModelEvent.LOAD_COMPLETE, bmp));
+				_jpegBmp = loader.content as Bitmap;
+				dispatchEvent(new SplitPageModelEvent(SplitPageModelEvent.LOAD_COMPLETE));
 			});
 			loader.load(new URLRequest(url));
 		}
@@ -39,6 +40,11 @@ package net.littlepad.splito.models
 		public function get jpegUrl():String
 		{
 			return _jpegUrl;
+		}
+		
+		public function get jpegBmp():Bitmap
+		{
+			return _jpegBmp;
 		}
 	}
 }
