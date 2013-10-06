@@ -49,7 +49,7 @@
 	</fx:Script>
 	
 	<s:VGroup gap="10" width="100%" height="100%" top="10" bottom="10" left="10" right="10" horizontalAlign="center">
-		<pages:SplitPageView id="splitPage" scaleX="0.35" scaleY="0.35"/>
+		<pages:SplitPageView id="splitPage" scaleX="0.18" scaleY="0.18"/>
 		<s:HGroup>
 			<s:Label fontFamily="Arial" fontSize="10" color="0x999999" textAlign="right" paddingTop="2" text="{int(splitPage.minScale*100)}%"/>
 			<s:HSlider width="300" id="slider" minimum="{uint(splitPage.minScale*100)}" maximum="100" enabled="false"/>

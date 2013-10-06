@@ -8,10 +8,10 @@ package net.littlepad.splito.controllers
 	import mx.managers.PopUpManager;
 	
 	import net.littlepad.splito.data.OutputSettingData;
-	import net.littlepad.splito.views.dialogs.ProgressDialog;
 	import net.littlepad.splito.events.MainModelEvent;
 	import net.littlepad.splito.events.SplitPageEvent;
 	import net.littlepad.splito.models.MainModel;
+	import net.littlepad.splito.views.dialogs.ProgressDialog;
 
 	public class MainController
 	{

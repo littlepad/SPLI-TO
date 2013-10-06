@@ -5,14 +5,14 @@ package net.littlepad.splito.configs
 		/**
 		 * A6サイズ (105mm x 148mm)
 		 */
-		public static const A6_WIDTH:Number = 744.0945;
-		public static const A6_HEIGHT:Number = 1048.8189;
+		public static const A6_WIDTH:Number = 1446;
+		public static const A6_HEIGHT:Number = 2038;
 		
 		/**
 		 * ドブサイズ (3mm)
 		 */
-		public static const CLIPPING_WIDTH:Number = 21.2598;
-		public static const CLIPPING_HEIGHT:Number = 21.2598;
+		public static const CLIPPING_WIDTH:Number = 42;
+		public static const CLIPPING_HEIGHT:Number = 42;
 		
 		/**
 		 * 印刷サイズ（A6サイズ + ドブ）
@@ -23,6 +23,6 @@ package net.littlepad.splito.configs
 		/**
 		 * ノド部分の余裕値 (5mm)
 		 */
-		public static const THROAT_MARGIN:Number = 35.4331;
+		public static const THROAT_MARGIN:Number = 70;
 	}
 }
