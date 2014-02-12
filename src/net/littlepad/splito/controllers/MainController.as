@@ -77,7 +77,7 @@ package net.littlepad.splito.controllers
 		
 		private function outputProgressHandler(event:MainModelEvent):void
 		{
-			_progressDialog.progressBar.width = (_progressDialog.progressBarBase.width - 2) * event.data/100;
+			_progressDialog.progressBar.width = (_progressDialog.progressBarBase.width - 2) * event.parcent/100;
 		}
 		
 		private function outputCompleteHandler(event:MainModelEvent):void
